@@ -4,7 +4,7 @@ library(tidyverse)
 invitro <- read_excel("data/induction.xlsx",1)
 # Clean drug names using stringr
 invitro_processed <- invitro %>%
-  select(Inducer,Metric, GMR, Incubation, PMID, Notes) %>%
+  select(Inducer,Metric, Value, Unit, Incubation, PMID, Notes, `non human liver cell based`, `mRNA-based`) %>%
   mutate(Inducer = str_to_lower(Inducer)) %>%
   mutate(Inducer = str_trim(Inducer))
 
@@ -43,7 +43,7 @@ invitro_processed <- invitro_processed %>%
   )
 #save the processed invitro data
 write_csv(invitro_processed, "data/invitro_processed.csv")
-#read clinical data
+#read clinical concentration data
 css <- read_excel("data/concentration.xlsx",1) %>%
   select(Drug, Value, Unit, MW)
 fu <- read_excel("data/concentration.xlsx",2) %>%
