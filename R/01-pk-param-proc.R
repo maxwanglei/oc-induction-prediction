@@ -1,5 +1,4 @@
-library(readxl)
-library(tidyverse)
+
 #read xlsx files and normalize drug names
 invitro <- read_excel("data/induction.xlsx",1)
 # Clean drug names using stringr
